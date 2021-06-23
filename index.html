@@ -1,0 +1,131 @@
+<!DOCTYPE.html>
+<html>
+<head>
+   <title></title>
+   <style>
+*{
+   margin:0;
+   padding:0;
+}
+.search-box{
+   top:30%;
+   left:10%;
+   position:absolute;
+   height:30px;
+   border-radius:40px;
+   padding:15px;
+   background:#e100ff;
+}
+.search-btn{
+   width:50px;
+   height:50px;
+   position:relative;
+   top:-10px;
+   float:right;
+   border-radius:40px;
+   display:flex;
+   background:#e100ff;
+   align-items:center;
+   justify-content:center;
+}
+.search-txt{
+   border:none;
+   background:none;
+   outline:none;
+   float:flex;
+   padding:0;
+   font-size:2rem;
+   font-size:16px;
+   line-height:30px;
+   transition:0.4s;
+   width:0px;
+}
+.search-btn img{
+   width:40px;
+   height:40px;
+}
+.search-box:hover .search-txt{
+   width:200px;
+}
+.search-box:hover .search-btn{
+   background:grey;
+}
+
+/*search list*/
+.src-list{
+   width:200px;
+   height:85px;
+   position:relative ;
+     top:50%;
+     left:10%;
+     overflow:scroll;
+     box-sizing:border-box;
+}
+.ul{
+   visibility:hidden;
+}
+
+.ul li{
+     list-style:none;
+     border:2px solid grey;
+     padding:10px 0px;
+  }
+.ul li a{
+   text-decoration:none;
+    padding:10px 40px;
+   color:black;
+   font-size:15px;
+ 
+}
+
+   </style>
+</head>
+<body>
+   
+   <div class="search-box">
+ <input type="text" name="search" class="search-txt" id="myInput" placeholder="search" onkeyup="searchYoutubers()" onclick="mySearch()">
+      <div class="search-btn">
+    <img src="search icon.png">    
+      </div>
+   </div>
+   <div class="src-list">
+   <ul id="myUl" class="ul">
+  <li><a href="#">Firstname</a></li>
+ <li><a href="#">Lastname</a></li>
+ <li><a href="#">Comments</a></li>
+ <li><a href="#">Password</a></li>
+  <li><a href="#">Submit</a></li>
+   
+</ul>
+</div>
+<div onclick="rmv()">
+   <h1>remove list</h1>
+</div>
+
+
+<script>
+    const searchYoutubers= () => {
+    let filter=document.getElementById('myInput').value.toUpperCase();
+    let ul=document.getElementById('myUl');
+    let li=ul.getElementsByTagName('li');
+    for(var i=0;i<li.length;i++){
+      let a=li[i].getElementsByTagName('a')[0];
+      let textValue=a.textContent;
+      if(textValue.toUpperCase().indexOf(filter)> -1){
+         li[i].style.display='';
+      }else{
+         li[i].style.display='none';
+      }
+    }
+   }
+    function mySearch(){
+   var input=document.querySelector(".ul");
+input.style.visibility="visible";
+   }
+  function rmv(){
+     var rmv=document.querySelector("#myUl");
+   rmv.style.visibility="hidden";
+   }
+</script>
+</body>
+</html>
